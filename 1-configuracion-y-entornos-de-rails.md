@@ -39,7 +39,67 @@ The Rails 5 Way
 
 ```
 gem 'activemerchant', '1.29.3'
+```
 
+### Gem Locking
+
+Cada vez que ejecutas bundle install o bundle update, Bundler calcula el árbol de dependencias para tu aplicación y almacena los resultados en un archivo llamado Gemfile.lock que se parece un poco a esto:
+
+```
+GEM
+  remote: https://rubygems.org/
+  specs:
+    actioncable (5.0.0.1)
+      actionpack (= 5.0.0.1)
+      nio4r (~> 1.2)
+      websocket-driver (~> 0.6.1)
+    actionmailer (5.0.0.1)
+      actionpack (= 5.0.0.1)
+      actionview (= 5.0.0.1)
+      activejob (= 5.0.0.1)
+      mail (~> 2.5, >= 2.5.4)
+      rails-dom-testing (~> 2.0)
+```
+
+Una vez que se crea un archivo de bloqueo, Bundler solo cargará las versiones específicas de las gemas que estaba utilizando en el momento en que se bloqueó el Gemfile, con la idea de que bloquee su configuración para usar versiones de dependencias que sepa que funcionarán bien con su solicitud.
+
+> Nota
+>
+> El archivo Gemfile.lock siempre se debe verificar en el control de la versión, para garantizar que cada máquina que ejecuta la aplicación utilice las mismas versiones exactas de gems.7
+>
+> Para ilustrar la importancia de esto, imagina que Gemfile.lock falta y la aplicación se está implementando en producción. Como el árbol de dependencias no existe, Bundler tiene que resolver todas las gemas del Gemfile en esa máquina. Esto en consecuencia puede instalar versiones de gemas más nuevas que las probadas, causando problemas imprevistos.
+
+### Packaging gems
+
+Puede empaquetar todas sus gemas en el directorio de `vendor/cache` dentro de su aplicación Rails:
+
+```
+$ bundle package
+```
+
+Ejecutar `bundle install --local` en una aplicación con gemas empaquetadas usará las gemas en el paquete y omitirá la conexión a rubygems.org o cualquier otra fuente de gemas. Puede usar esto para evitar dependencias externas en el momento del despliegue o si depende de gemas privadas que no están disponibles en ningún repositorio público.
+
+> Haciendo que las dependencias de gem estén disponibles para scripts que no sean de Rails
+>
+> Los scripts que no son Rails se deben ejecutar con bundle exec para obtener un entorno RubyGems correctamente inicializado:
+>
+> `$ bundle exec guard`
+
+### Bin Stubs
+
+Al iniciar una nueva aplicación, se crearán binstubs para los ejecutables de Rails, ubicados en la carpeta bin. Un binstub es un script que contiene un ejecutable que se ejecuta en el contexto del paquete. Esto significa que no es necesario prefijar el paquete exec cada vez que se invoca un ejecutable específico de Rails. Los binstubs son ciudadanos de primera clase de su proyecto y deben agregarse a su sistema de control de versiones como cualquier otro archivo de código fuente.
+
+Por defecto, los siguientes stubs están disponibles en cada nuevo proyecto de Rails:
+
+```
+• bin/bundle • bin/rails • bin/rake
+• bin/setup • bin/spring • bin/update
+```
+
+Para agregar un binstub de un ejecutable de uso común en su paquete, invoque los binstubs del paquete a algún nombre de gema. Para ilustrar, considere el siguiente ejemplo,
+
+```
+$ bundle binstubs guard
 ```
 
 
