@@ -1,8 +1,22 @@
-# First Chapter
+# Prólogo
 
-GitBook allows you to organize your book into chapters, each chapter is stored in a separate file like this one.
+Hace mucho tiempo, era pasante en una empresa de tecnología. Tuvimos "implementaciones semanales", lo que significa que después de la implementación, tomamos una semana completa para combatir los incendios. Mover nuestro código al entorno de producción inevitablemente provocaría cambios inesperados. Un día, leí una publicación de blog titulada "Pruebas unitarias con Ruby on Rails", y mi vida cambió para siempre. Fui entusiasmado y le dije a mi equipo que podíamos escribir código para verificar si nuestro código funcionaba antes de implementarlo, pero no estaban particularmente interesados. Unos meses más tarde, cuando un amigo me preguntó si quería ser el director de tecnología de su startup, le dije: "Solo si puedo hacerlo en Ruby on Rails".
 
+Mi historia fue bastante típica para ese período. No sabía nada de Ruby, pero tuve que escribir mi solicitud en Rails. Descubrí que Ruby era suficiente para fingir y improvisar una aplicación en tiempo récord. Solo había un problema: realmente no entendía cómo funcionaba. Este es el trato que todos hacen con Rails al comienzo. No puedes pensar demasiado en los detalles porque estás volando hacia el cielo como un cohete.
 
+Este libro, sin embargo, no se trata de eso. Cuando leí The Rails Way por primera vez, sentí que realmente entendía Rails por primera vez. Todos esos detalles que no entendía del todo ahora pueden ser asimilados. Cada vez que alguien dice: "Rails es mágico", me sonreía a mí mismo. Si Rails era mágico, había mirado detrás de la cortina. Un día decidí que debería escribir algunos documentos para ayudar a disipar ese tipo de comentarios. Un commit se convirtió en dos; dos se convirtieron en veinte. Finalmente, fui un gran colaborador por derecho propio. ¡Un camino tan largo para alguien que solo había tenido unos pocos años antes y nunca había escuchado acerca de una prueba unitaria!
 
-esta es la primera actualizacion
+Como Rails ha cambiado, también lo ha hecho The Rails Way. De hecho, una crítica que podrías hacer de este libro es que en realidad no es "el camino de Rails"; después de todo, ¡te enseña HAML en lugar de ERb! Creo que esta crítica pierde la marca. Después de todo, ya no es 2005. Para ver lo que quiero decir, ve a leer los dos prólogos de las ediciones anteriores. Aparecen justo después de este ... Esperaré.
+
+¿Hecho? El prólogo de David fue bastante preciso tanto para Rails 2 como para The Rails Way. En ese momento, Rails era mucho más "no como una pizarra en blanco igualmente tolerante con todo tipo de expresiones". Rails se creó para lo que yo llamo el "Omakase Stack": no tienes otra opción, obtienes exactamente lo que el Chef David quiere servir usted.1
+
+El prólogo de Yehuda también era bastante preciso, pero para Rails 3 y The Rails 3 Way. "Trajimos esta filosofía a todas las áreas de Rails 3: flexibilidad sin compromiso." Con Rails 3, obtienes la pila Omakase por defecto, pero puedes cambiar los componentes: si no te gusta el sushi, puedes sustituirlo sashimi.
+
+Hubo muchos gemidos y crujir de dientes durante el desarrollo de Rails 3. Jeremy Ashkenas lo llamó "de lejos la peor desgracia que le haya sucedido a Rails". Rails 3 fue una inversión en el futuro de Rails, y las inversiones pueden demorar un tiempo. En el lanzamiento de Rails 3, parecía que habíamos esperado más de un año sin nuevas características. Rails estaba un poco mejor, pero más o menos igual. El beneficio real era donde no se podía ver: en el trabajo de refactorización. Rails 1 era "rojo-verde". Rails 2 era "rojo-verde". Rails 3 era "refactor". Los creadores de gemas tardaron un tiempo en aprovechar esta flexibilidad, pero finalmente lo hicieron.
+
+Y eso nos lleva ahora a Rails 4 y The Rails 4 Way. Este libro todavía explica bastante sobre cómo funciona Rails en un nivel bajo, pero también le da una visión alternativa de Omakase Stack, basada en la experiencia y el talento de Hashrocket. En muchos sentidos, The Rails 4 Way, Agile Web Development with Rails y Rails 4 in Action son todos "el camino de Rails". Los desarrolladores de Contemporary Rails obtienen lo mejor de ambos mundos: pueden aprovechar el rápido desarrollo de la convención sobre la configuración , pero si eligen seguir una convención diferente, pueden hacerlo. Y tenemos muchos conjuntos de convenciones para elegir. Ya no es "el camino de David o la de rails", aunque el camino de David es obviamente el predeterminado, como debería ser.
+
+Han sido unos años increíbles para Rails, y ha sido un placer participar en su desarrollo. Espero que este libro le brinde el mismo nivel de perspicacia y claridad en Rails como lo hizo por mí, hace años, a la vez que despierta su imaginación por lo que Rails sin dudas se convertirá en el futuro.
+
+-Steve Klabnik, Ruby Hero
 
