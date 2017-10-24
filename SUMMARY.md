@@ -10,4 +10,5 @@
   * [3- Ajax on Rails](3-ajax-on-rails.md)
 * [2- Advanced Rails](2-advanced-rails.md)
   * [2.1 - Técnicas Fundamentales](2-advanced-rails/21-tecnicas-fundamentales.md)
+  * [2.2 - Programación Funcional](2-advanced-rails/22-programacion-funcional.md)
 
