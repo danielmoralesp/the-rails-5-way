@@ -23,7 +23,7 @@ Está fuera del alcance de este libro enseñarle los fundamentos de JavaScript y
 
 ### JavaScript discreto
 
-Las características de JavaScript discreto \(UJS\) en Rails proporcionan una API independiente de la biblioteca para especificar las acciones de Ajax. El equipo de Rails ha proporcionado implementaciones de UJS para jQuery y Prototype, disponibles en https://github.com/rails/jquery-ujs y https://github.com/rails/prototype-rails, respectivamente. De forma predeterminada, las aplicaciones Rails recién creadas usan jQuery como su biblioteca de JavaScript de elección.
+Las características de JavaScript discreto \(UJS\) en Rails proporcionan una API independiente de la biblioteca para especificar las acciones de Ajax. El equipo de Rails ha proporcionado implementaciones de UJS para jQuery y Prototype, disponibles en [https://github.com/rails/jquery-ujs](https://github.com/rails/jquery-ujs) y [https://github.com/rails/prototype-rails](https://github.com/rails/prototype-rails), respectivamente. De forma predeterminada, las aplicaciones Rails recién creadas usan jQuery como su biblioteca de JavaScript de elección.
 
 Para integrar jQuery fácilmente en su aplicación Rails, simplemente incluya la gema jquery-rails en su Gemfile y ejecute la instalación del paquete. A continuación, asegúrese de que las directivas correctas estén presentes en su archivo de manifiesto de JavaScript \(se enumeran a continuación\).
 
@@ -34,14 +34,12 @@ The Rails 5 Way
 ```
 gem 
 'jquery-rails'
-
 ```
 
 ```
 // app/assets/javascripts/application.js
 //= require jquery
 //= require jquery_ujs
-
 ```
 
 Al incluir las que requieren declaraciones en el archivo de manifiesto de JavaScript, las bibliotecas jQuery y jquery\_-ujs se incluirán automáticamente junto con el resto de sus activos y se mostrarán al navegador de manera eficiente. El uso de archivos de manifiesto se trata en detalle en el Capítulo 20, "Canalización de activos".
@@ -61,5 +59,5 @@ Antes del uso de las técnicas de UJS, el HTML resultante se parecería a este d
 <a href="/users/1" onclick="if (confirm('Sure?')) { var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'delete'); f.appendChild(m);f.submit(); };return false;">Delete</a>
 ```
 
-
+Prueba de cambio de nombre
 
