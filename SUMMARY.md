@@ -7,5 +7,6 @@
   * [1- Configuración y entornos de Rails](1-configuracion-y-entornos-de-rails.md)
   * [2- Active Job](2-active-job.md)
   * [3- Ajax on Rails](3-ajax-on-rails.md)
+* [2- Advanced Rails](2-advanced-rails.md)
 * [Vacio](README.md)
 
