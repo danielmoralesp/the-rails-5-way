@@ -2,7 +2,7 @@
 
 Desde su lanzamiento inicial en julio de 2004, el framework web Ruby on Rails ha ganado popularidad constantemente. Rails ha estado convirtiendo a los desarrolladores de PHP, Java y .NET de una manera más simple: una arquitectura modelo-vista-controlador \(MVC\), valores predeterminados razonables \("convención sobre configuración"\) y el poderoso lenguaje de programación Ruby.
 
-Rails tenía una mala reputación por la falta de documentación durante su primer año o dos. Esta brecha ha sido completada por los miles de desarrolladores que usan, contribuyen y escriben sobre Ruby on Rails, así como también por el proyecto de documentación de Rails \([http://railsdocumentation.org/\](http://railsdocumentation.org/\)\). Hay cientos de blogs que ofrecen tutoriales y consejos para el desarrollo de Rails.
+Rails tenía una mala reputación por la falta de documentación durante su primer año o dos. Esta brecha ha sido completada por los miles de desarrolladores que usan, contribuyen y escriben sobre Ruby on Rails, así como también por el proyecto de documentación de Rails \([http://railsdocumentation.org/\](http://railsdocumentation.org/%29\). Hay cientos de blogs que ofrecen tutoriales y consejos para el desarrollo de Rails.
 
 El objetivo de este libro es recopilar y extraer las mejores prácticas y el conocimiento incorporado por la comunidad de desarrolladores de Rails y presentar todo en un formato compacto y fácil de entender para programadores experimentados. Además, busco presentar facetas del desarrollo web que a menudo son subestimadas o descartadas por la comunidad de Rails.
 
@@ -137,6 +137,89 @@ def erb_render(fixture_content)
        ERB.new(fixture_content).result
 end
 ```
+
+La programación generativa a menudo usa Module Module `define_method` o `class_eval` y `def` para crear métodos sobre la marcha. ActiveRecord usa esta técnica para acceder a los atributos; la característica `generate_read_methods` define los métodos setter y reader como métodos de instancia en la clase ActiveRecord para reducir el número de veces que se necesita `method_missing` \(una técnica relativamente costosa\).
+
+### Continuaciones
+
+Las continuaciones son un mecanismo de control de flujo muy poderoso. Una continuación representa un estado particular de la pila de llamadas y las variables léxicas. Es una instantánea de un punto en el tiempo al evaluar el código de Ruby. Desafortunadamente, la implementación de continuaciones de Ruby 1.8 es tan lenta que no se puede usar en muchas aplicaciones. Las próximas máquinas virtuales Ruby 1.9 pueden mejorar esta situación, pero no debe esperar un buen rendimiento de las continuaciones bajo Ruby 1.8. Sin embargo, son construcciones útiles, y los marcos web basados ​​en la continuación proporcionan una alternativa interesante a los marcos como Rails, por lo que estudiaremos su uso aquí.
+
+Las continuaciones son poderosas por varias razones:
+
+• Las continuaciones son solo objetos; se pueden pasar de una función a otra.
+
+• Las continuaciones pueden invocarse desde cualquier lugar. Si mantiene una referencia a una continuación, puede invocarla.
+
+• Las continuaciones son reingresantes. Puede usar continuaciones para regresar de una función varias veces.
+
+Las continuaciones a menudo se describen como "GOTO estructurado". Como tales, deben tratarse con la misma precaución que cualquier tipo de construcción GOTO. Las continuaciones tienen poco o ningún lugar dentro del código de la aplicación; por lo general, deben estar encapsulados dentro de las bibliotecas. No digo esto porque creo que los desarrolladores deberían estar protegidos de ellos mismos. Por el contrario, las continuaciones son lo suficientemente generales como para que tenga más sentido construir abstracciones a su alrededor que usarlas directamente. La idea es que un programador piense en "iterador externo" o "coroutine" \(ambas abstracciones creadas a partir de las continuidades\) en lugar de "continuación" al crear el software de la aplicación.
+
+Seaside \* es un framework de aplicaciones web Smalltalk construido sobre las continuidades. Las continuaciones se usan en Seaside para administrar el estado de la sesión. Cada sesión de usuario corresponde a una continuación del lado del servidor. Cuando entra una solicitud, se invoca la continuación y se ejecuta más código. El resultado es que transacciones enteras se pueden escribir como una secuencia de código en gran escala, incluso para las múltiples solicitudes HTTP. Esta potencia proviene del hecho de que las continuidades de Smalltalk son serializables; se pueden escribir en una base de datos o en el sistema de archivos, luego se pueden descongelar y reinvocar a petición. Las continuaciones de Ruby son no-serializables. En Ruby, las continuaciones están en memoria solamente y no se pueden transformar en una secuencia de bytes.
+
+Borges \(http://borges.rubyforge.org/\) es un puerto directo de Seaside 2 a Ruby. La principal diferencia entre Seaside y Borges es que Borges debe almacenar todas las continuaciones actuales en la memoria, ya que no son serializables. Esta es una gran limitación que, lamentablemente, impide que Borges sea exitoso para aplicaciones web con cualquier tipo de volumen. Si las implementaciones serializables se implementan en una de las implementaciones de Ruby, esta limitación se puede eliminar.
+
+El poder de las continuaciones es evidente en el siguiente código de ejemplo de Borges, que muestra una lista de artículos de una tienda en línea:
+
+```ruby
+class SushiNet::StoreItemList < Borges::Component
+    def choose(item)
+        call SushiNet::StoreItemView.new(item)
+    end
+    def initialize(items)
+        @batcher = Borges::BatchedList.new items, 8
+    end
+    def render_content_on(r)
+        r.list_do @batcher.batch do |item|
+            r.anchor item.title do choose item end
+        end
+        r.render @batcher
+    end
+end # class SushiNet::StoreItemList
+```
+
+La mayor parte de la acción ocurre en el método `render_content_on`, que usa una BatchedList \(un paginador\) para generar una lista paginada de enlaces a los productos. Pero la diversión ocurre en la llamada al anclaje, que almacena la llamada a elegir, para ser ejecutada cuando se hace clic en el enlace correspondiente.
+
+Sin embargo, todavía hay gran desacuerdo sobre cuán útiles son las continuaciones para la programación web. HTTP fue diseñado como un protocolo sin estado, y las continuas para las transacciones web son lo opuesto a la apatridia. Todas las continuaciones se deben almacenar en el servidor, lo que requiere memoria adicional y espacio en el disco. Se requieren sesiones fijas para dirigir el tráfico de un usuario al mismo servidor. Como resultado, si un servidor se cae, todas sus sesiones se pierden. La aplicación más popular de Seaside, DabbleDB \(http://dabbledb.com/\), en realidad usa continuaciones muy poco.
+
+### Vinculaciones
+
+Los enlaces proporcionan contexto para la evaluación del código de Ruby. Un enlace es el conjunto de variables y métodos que están disponibles en un punto particular \(léxico\) en el código. Cualquier lugar en el código de Ruby donde se puedan evaluar las declaraciones tiene una vinculación, y esa vinculación se puede obtener con el enlace Núcleo \#. Los enlaces son solo objetos de la vinculación de clase, y se pueden pasar como cualquier objeto puede:
+
+### Monkeypatching
+
+En Ruby, todas las clases están abiertas. Cualquier objeto o clase es un juego justo para ser modificado en cualquier momento. Esto brinda muchas oportunidades para ampliar o anular la funcionalidad existente. Esta extensión se puede hacer muy limpiamente, sin modificar las definiciones originales.
+
+Rails aprovecha ampliamente el sistema de clases abierto de Ruby. Abrir clases y agregar código se conoce como monkeypatching \(un término de la comunidad de Python\). Aunque suene derogatorio, este término se usa en una luz decididamente positiva; el parche de mono es, en general, visto como una técnica increíblemente útil. Casi todos los plugins de Rails montan el núcleo de Rails de una forma u otra.
+
+#### Desventajas de monkeypatching
+
+Hay dos desventajas principales para monkeypatching. En primer lugar, el código para una llamada a un método puede repartirse en varios archivos. El mejor ejemplo de esto es el método de proceso de ActionController. Este método es interceptado por métodos en hasta cinco archivos diferentes durante el transcurso de una solicitud. Cada uno de estos métodos agrega otra característica: filtros, rescate de excepción, componentes y administración de sesión. El resultado final es una ganancia neta: el beneficio obtenido al separar cada componente funcional en un archivo separado supera la pila de llamadas inflada.
+
+Otra consecuencia de la dispersión de la funcionalidad es que puede ser difícil documentar adecuadamente un método. Debido a que la función del método de proceso puede cambiar dependiendo de qué código se haya cargado, no hay un buen lugar para documentar lo que cada uno de los métodos está agregando. Este problema existe porque la identidad real del método de proceso cambia a medida que los métodos se encadenan entre sí.
+
+### Agregar funcionalidad a los métodos existentes
+
+Debido a que Rails fomenta la filosofía de la separación de concerns, a menudo tendrá la necesidad de ampliar la funcionalidad del código existente. Muchas veces querrá "aplicar parches" a una función existente sin alterar el código de esa función. Su adición puede no estar directamente relacionada con el propósito original de la función: puede agregar autenticación, registro o alguna otra preocupación transversal importante.
+
+Examinaremos varios enfoques del problema de las preocupaciones transversales y explicaremos el \(encadenamiento de métodos\) que ha adquirido mayor impulso en las comunidades de Ruby and Rails.
+
+#### Subclasificación
+
+En la programación tradicional orientada a objetos, una clase se puede extender heredando de ella y cambiando sus datos o comportamiento. Este paradigma funciona para muchos propósitos, pero tiene inconvenientes:
+
+• Los cambios que desea realizar pueden ser pequeños, en cuyo caso la configuración de una nueva clase puede ser demasiado compleja. Cada nueva clase en una jerarquía de herencia se suma a la sobrecarga mental requerida para comprender el código.
+
+• Es posible que deba realizar una serie de cambios relacionados a varias clases que, por lo demás, no están relacionadas. Subclasificar cada uno individualmente sería excesivo y separaría la funcionalidad que debería mantenerse junta.
+
+• Es posible que la clase ya esté en uso en toda la aplicación y desee cambiar su comportamiento de forma global.
+
+• Es posible que desee agregar o quitar una función en el tiempo de ejecución y hacer que surta efecto de manera global. \(Exploraremos esta técnica con un ejemplo completo más adelante en el capítulo\).
+
+En lenguajes orientados a objetos más tradicionales, estas características requerirían código complejo. El código no solo sería complejo, sino que estaría estrechamente vinculado al código existente o al código que lo llama.
+
+#### Método de encadenamiento
+
+La solución estándar de Ruby para este problema es el encadenamiento de métodos: aliasing un método existente a un nuevo nombre y sobrescribir su definición anterior con un nuevo cuerpo. Este nuevo cuerpo usualmente llama a la vieja definición de método al referirse al nombre con alias \(el equivalente a llamar a super en un método de sustitución heredado\). El efecto es que una característica se puede parchear alrededor de un método existente. Debido a la naturaleza de clase abierta de Ruby, las características se pueden agregar a casi cualquier código desde cualquier lugar. Huelga decir que esto debe hacerse con prudencia a fin de mantener la claridad.
 
 
 
