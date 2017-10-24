@@ -2,7 +2,7 @@
 
 Desde su lanzamiento inicial en julio de 2004, el framework web Ruby on Rails ha ganado popularidad constantemente. Rails ha estado convirtiendo a los desarrolladores de PHP, Java y .NET de una manera más simple: una arquitectura modelo-vista-controlador \(MVC\), valores predeterminados razonables \("convención sobre configuración"\) y el poderoso lenguaje de programación Ruby.
 
-Rails tenía una mala reputación por la falta de documentación durante su primer año o dos. Esta brecha ha sido completada por los miles de desarrolladores que usan, contribuyen y escriben sobre Ruby on Rails, así como también por el proyecto de documentación de Rails \(http://railsdocumentation.org/\). Hay cientos de blogs que ofrecen tutoriales y consejos para el desarrollo de Rails.
+Rails tenía una mala reputación por la falta de documentación durante su primer año o dos. Esta brecha ha sido completada por los miles de desarrolladores que usan, contribuyen y escriben sobre Ruby on Rails, así como también por el proyecto de documentación de Rails \([http://railsdocumentation.org/\](http://railsdocumentation.org/\)\). Hay cientos de blogs que ofrecen tutoriales y consejos para el desarrollo de Rails.
 
 El objetivo de este libro es recopilar y extraer las mejores prácticas y el conocimiento incorporado por la comunidad de desarrolladores de Rails y presentar todo en un formato compacto y fácil de entender para programadores experimentados. Además, busco presentar facetas del desarrollo web que a menudo son subestimadas o descartadas por la comunidad de Rails.
 
@@ -122,6 +122,20 @@ Volviendo al ejemplo anterior, ERb hace que nuestro trabajo sea mucho más fáci
        owner_id: <%= user.id %>
        billing_status_id: <%= user.billing_status.id %>
 <% end %>
+```
+
+La implementación de ActiveRecord de este práctico truco no podría ser más simple:
+
+```ruby
+yaml = YAML::load(erb_render(yaml_string))
+```
+
+usando el helper method `erb_render`
+
+```ruby
+def erb_render(fixture_content)
+       ERB.new(fixture_content).result
+end
 ```
 
 
