@@ -8,5 +8,6 @@
   * [2- Active Job](2-active-job.md)
   * [3- Ajax on Rails](3-ajax-on-rails.md)
 * [2- Advanced Rails](2-advanced-rails.md)
+  * [2.1 - Técnicas Fundamentales](2-advanced-rails/21-tecnicas-fundamentales.md)
 * [Vacio](README.md)
 
