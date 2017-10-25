@@ -35,4 +35,5 @@
   * [2.7 REST, Resources, y Web Services](2-advanced-rails/27-rest-resources-y-web-services.md)
     * [2.7.1 - ¿Qué es REST?](2-advanced-rails/27-rest-resources-y-web-services/271-que-es-rest.md)
     * [2.7.2 - Beneficios de una arquitectura RESTful](2-advanced-rails/27-rest-resources-y-web-services/272-beneficios-de-una-arquitectura-restful.md)
+    * [2.7.3 - RESTful Rails](2-advanced-rails/27-rest-resources-y-web-services/273-restful-rails.md)
 
