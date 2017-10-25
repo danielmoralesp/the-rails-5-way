@@ -34,7 +34,9 @@ Una actualización a Slony, Slony-II, se encuentra en las primeras etapas de des
 
 #### Replicación Multimaster: PGCluster
 
-PGCluster \(http://pgcluster.projects.postgresql.org/\) es un producto que ofrece la replicación de varios y la agrupación para PostgreSQL. Proporciona equilibrio de carga y alta disponibilidad para un clúster de base de datos. El software maneja el failover y proporciona una solución fácilmente disponible si se utilizan tres o más servidores físicos.
+PGCluster \([http://pgcluster.projects.postgresql.org/\](http://pgcluster.projects.postgresql.org/\)\) es un producto que ofrece la replicación de varios y la agrupación para PostgreSQL. Proporciona equilibrio de carga y alta disponibilidad para un clúster de base de datos. El software maneja el failover y proporciona una solución fácilmente disponible si se utilizan tres o más servidores físicos.
 
 El estilo de replicación de PGCluster es sincrónico; las actualizaciones se propagan a todos los servidores antes de que la transacción de actualización tenga éxito. Por lo tanto, solo se debe usar en entornos donde todos los servidores maestros estén en la misma ubicación y estén siempre conectados. La replicación asincrónica, en la que los cambios se propagan a otros servidores poco tiempo después de la transacción, generalmente se considera un problema difícil. La replicación asincrónica también es específica de la aplicación, ya que la forma correcta de manejar los conflictos entre dos transacciones confirmadas depende de las necesidades de la aplicación.
+
+
 
