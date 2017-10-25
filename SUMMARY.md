@@ -21,4 +21,5 @@
     * [2.4.1 - Sistemas de gestión de bases de datos](2-advanced-rails/24-database/241-sistemas-de-gestion-de-bases-de-datos.md)
     * [2.4.2 - Large/Binary Objects](2-advanced-rails/24-database/242-largebinary-objects.md)
     * [2.4.3 - Advanced Database Features](2-advanced-rails/24-database/243-advanced-database-features.md)
+    * [2.4.4 - Conectandose a multiples bases de datos](2-advanced-rails/24-database/244-conectandose-a-multiples-bases-de-datos.md)
 
