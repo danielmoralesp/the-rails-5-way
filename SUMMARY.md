@@ -22,4 +22,6 @@
     * [2.4.2 - Large/Binary Objects](2-advanced-rails/24-database/242-largebinary-objects.md)
     * [2.4.3 - Advanced Database Features](2-advanced-rails/24-database/243-advanced-database-features.md)
     * [2.4.4 - Conectandose a multiples bases de datos](2-advanced-rails/24-database/244-conectandose-a-multiples-bases-de-datos.md)
+    * [2.4.5 - Caching](2-advanced-rails/24-database/245-caching.md)
+    * [2.4.6 - Equilibrio de carga y alta disponibilidad](2-advanced-rails/24-database/246-equilibrio-de-carga-y-alta-disponibilidad.md)
 
