@@ -12,4 +12,13 @@
   * [2.1 - Técnicas Fundamentales](2-advanced-rails/21-tecnicas-fundamentales.md)
     * [2.1.1 - Programacion Funcional](2-advanced-rails/21-tecnicas-fundamentales/211-programacion-funcional.md)
   * [2.2 - ActiveSupport y RailTies](2-advanced-rails/23-activesupport-y-railties.md)
+    * [2.2.1 - ActiveSupport](2-advanced-rails/23-activesupport-y-railties/221-activesupport.md)
+    * [2.2.2 - Core Extensions](2-advanced-rails/23-activesupport-y-railties/222-core-extensions.md)
+    * [2.2.3 - Rails Tails](2-advanced-rails/23-activesupport-y-railties/223-rails-tails.md)
+  * [2.3 - Rails Plugins](2-advanced-rails/23-rails-plugins.md)
+    * [2.3.1- Acerca de los Plugins](2-advanced-rails/23-rails-plugins/231-acerca-de-los-plugins.md)
+  * [2.4 - Database](2-advanced-rails/24-database.md)
+    * [2.4.1 - Sistemas de gestión de bases de datos](2-advanced-rails/24-database/241-sistemas-de-gestion-de-bases-de-datos.md)
+    * [2.4.2 - Large/Binary Objects](2-advanced-rails/24-database/242-largebinary-objects.md)
+    * [2.4.3 - Advanced Database Features](2-advanced-rails/24-database/243-advanced-database-features.md)
 

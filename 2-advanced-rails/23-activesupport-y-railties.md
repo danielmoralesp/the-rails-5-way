@@ -26,9 +26,9 @@ En la práctica, esto generalmente no es un problema. Ruby sigue un estilo de de
 
 • Un buen editor de texto lo ayudará a eliminar gran cantidad de fuentes.
 
-- TextMate \(http://macromates.com/\) es el editor semioficial del equipo central de Ruby on Rails. Tiene excelentes instalaciones para búsqueda \(incluida la búsqueda por expresiones regulares\) y viene con algunas características bastante impresionantes de Ruby and Rails. Es compatible con proyectos \(árboles fuente completos administrados como una unidad\). Sin embargo, está disponible solo para Mac OS X y cuesta 39 en el momento de escribir este artículo.
+* TextMate \([http://macromates.com/\](http://macromates.com/\)\) es el editor semioficial del equipo central de Ruby on Rails. Tiene excelentes instalaciones para búsqueda \(incluida la búsqueda por expresiones regulares\) y viene con algunas características bastante impresionantes de Ruby and Rails. Es compatible con proyectos \(árboles fuente completos administrados como una unidad\). Sin embargo, está disponible solo para Mac OS X y cuesta 39 en el momento de escribir este artículo.
 
-- Vim \(http://vim.org/\) es un increíble editor de texto de código abierto disponible para casi cualquier plataforma. Tiene una larga curva de aprendizaje, pero es extremadamente poderosa. Si usa Vim con Rails, hágase un favor e instale el paquete vim-ruby \(http://rubyforge.org/projects/vim-ruby/\).
+* Vim \([http://vim.org/\](http://vim.org/\)\) es un increíble editor de texto de código abierto disponible para casi cualquier plataforma. Tiene una larga curva de aprendizaje, pero es extremadamente poderosa. Si usa Vim con Rails, hágase un favor e instale el paquete vim-ruby \([http://rubyforge.org/projects/vim-ruby/\](http://rubyforge.org/projects/vim-ruby/\)\).
 
 • Junto con un buen editor de texto, debe familiarizarse con las herramientas de línea de comandos para el procesamiento de texto. Las expresiones regulares \(usadas con la herramienta de su elección, como sed, Perl o egrep\) proporcionan un lenguaje de consulta más poderoso para encontrar patrones dentro de grandes cuerpos de fuente.
 
@@ -52,13 +52,25 @@ Para comenzar a usar ruby-debug, instálalo con gem:
 
 ### Donde empezar
 
-Elige algo interesante
+#### Elige algo interesante
 
 No descarte la importancia de encontrar algo que le guste y correr con él. Este enfoque tiene varias ventajas. Lo mantiene mirando los aspectos que le interesan, mientras lo lleva a través de los componentes básicos, como ActiveSupport, que necesitará saber. También aprenderá los modismos que usan otros programadores de Rails, y probablemente aprenderá algo nuevo en el proceso.
 
 Aprende a amar la búsqueda global. Encuentre un método interesante y busque Rails para todos los lugares a los que se llama ese método.
 
-Comience en la parte superior
+#### Comience en la parte superior
 
 El final de este capítulo explicará cómo funciona la inicialización de Rails. Estas funciones proporcionan buenos puntos de entrada para estudiar la fuente Rails. Puede comenzar desde Initializer y rastrear una solicitud a través de una secuencia de llamadas a su aplicación, siguiendo el mismo camino que Ruby cuando ejecuta su código.
+
+#### Lee las pruebas
+
+Rails tiene un conjunto extremadamente completo de pruebas. De hecho, las pruebas a veces son más útiles que la documentación oficial, porque las pruebas especifican un comportamiento adecuado a través del código. Las pruebas proporcionan ejemplos creíbles y comprobados de cómo trabajar con la biblioteca en cuestión. Dado que muchas de las pruebas están escritas en un estilo de desarrollo basado en la prueba \(prueba primero\), a menudo proporcionan más detalles de implementación que la documentación.
+
+#### Estar al día
+
+Rails es un objetivo en movimiento: las personas contribuyen continuamente parches, y el equipo central siempre está buscando formas de mejorar. La mejor manera de mantenerse al tanto de los cambios vertiginosos es monitorear la línea de tiempo de Rails Trac \(http://dev.rubyonrails.org/timeline\). Una fuente RSS está disponible.
+
+También esté atento a las listas de distribución de ruby-core y rails-core, que detallan los cambios realizados en el núcleo de Ruby and Rails, respectivamente.
+
+
 
