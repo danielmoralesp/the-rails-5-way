@@ -1,0 +1,4 @@
+# 2.8.1 - Reemplazo de componentes de rails - Reemplazo de ActiveRecord
+
+ActiveRecord, el mapeador relacional de objetos Rails, es una de las partes más conocidas del framework Rails. Pero representa una de las muchas formas válidas para asignar objetos a una base de datos. Martin Fowler identificó y definió el patrón Active Record, junto con otros patrones de fuente de datos, en su libro Patterns of Enterprise Application Architec- ture. \(El patrón de registro activo no se debe confundir con la biblioteca de ActiveRecord, que se basa en ese patrón\). Se han desarrollado varias bibliotecas de Ruby basadas en otros patrones. Veremos DataMapper, basado en el patrón del mismo nombre. También examinaremos Ambition, una biblioteca experimental que correlaciona las declaraciones de Ruby directamente con SQL.
+

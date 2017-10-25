@@ -36,4 +36,10 @@
     * [2.7.1 - ¿Qué es REST?](2-advanced-rails/27-rest-resources-y-web-services/271-que-es-rest.md)
     * [2.7.2 - Beneficios de una arquitectura RESTful](2-advanced-rails/27-rest-resources-y-web-services/272-beneficios-de-una-arquitectura-restful.md)
     * [2.7.3 - RESTful Rails](2-advanced-rails/27-rest-resources-y-web-services/273-restful-rails.md)
+  * [2.8 - Incorporación y Extensión de Rails](2-advanced-rails/28-incorporacion-y-extension-de-rails.md)
+    * [2.8.1 - Reemplazo de componentes de rails - Reemplazo de ActiveRecord](2-advanced-rails/28-incorporacion-y-extension-de-rails/281-reemplazo-de-componentes-de-rails-reemplazo-de-activerecord.md)
+  * [2.9 - Grandes proyectos](2-advanced-rails/29-grandes-proyectos.md)
+    * [2.9.1 - Control de versiones](2-advanced-rails/29-grandes-proyectos/291-control-de-versiones.md)
+    * [2.9.2 - Issue Tracking](2-advanced-rails/29-grandes-proyectos/292-issue-tracking.md)
+    * [2.9.3 - Despliegue de rails](2-advanced-rails/29-grandes-proyectos/293-despliegue-de-rails.md)
 
