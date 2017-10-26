@@ -4,3 +4,5 @@ Como un framework web completo, Rails puede requerir algún trabajo para despleg
 
 
 
+Aqui vamos 26 oct
+
