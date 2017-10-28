@@ -44,4 +44,5 @@
     * [2.9.3 - Despliegue de rails](2-advanced-rails/29-grandes-proyectos/293-despliegue-de-rails.md)
 * [3- RSpec](3-rspec.md)
   * [3.1 Introduccion](3-rspec/31-introduccion.md)
+  * [3.2 - Hola](3-rspec/32-hola.md)
 
