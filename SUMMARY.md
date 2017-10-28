@@ -42,4 +42,6 @@
     * [2.9.1 - Control de versiones](2-advanced-rails/29-grandes-proyectos/291-control-de-versiones.md)
     * [2.9.2 - Issue Tracking](2-advanced-rails/29-grandes-proyectos/292-issue-tracking.md)
     * [2.9.3 - Despliegue de rails](2-advanced-rails/29-grandes-proyectos/293-despliegue-de-rails.md)
+* [3- RSpec](3-rspec.md)
+  * [3.1 Introduccion](3-rspec/31-introduccion.md)
 
