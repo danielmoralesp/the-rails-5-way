@@ -97,7 +97,8 @@ Ejecute nuevamente el archivo escribiendo `rspec greeter_spec.rb` y la salida de
 ```
 .
 
-Finished in 0.00075 seconds1 
+Finished in 0.00075 seconds
+1 
 example, 0 failures
 ```
 
@@ -159,5 +160,5 @@ Analizaremos más adelante los detalles de esta salida, pero lo mejor es que vem
 
 Una definición de paso es un método que crea un paso. En este ejemplo, usamos los métodos `Given()`, `When()` y `Then()` para escribir definiciones de pasos, cada una de las cuales toma una Regexp y un bloque. Cucumber leerá el primer paso en el escenario, Dando un saludo; busque una definición de paso cuya expresión regular coincida con ese paso; y luego ejecuta el bloque de esa definición de paso.
 
-Para que este escenario pase, debemos almacenar definiciones de pasos en un archivo que Cucumber puede cargar. Continúe y agregue un directorio step\_definitions dentro de hello / características, y agregue un archivo llamado greeter\_steps.rb con el siguiente código:
+Para que este escenario pase, debemos almacenar definiciones de pasos en un archivo que Cucumber puede cargar. Continúe y agregue un directorio `step_definitions` dentro de `hello/features`, y agregue un archivo llamado `greeter_steps.rb` con el siguiente código:
 
